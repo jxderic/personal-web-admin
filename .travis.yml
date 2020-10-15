@@ -9,4 +9,4 @@ branches:
 install:
   - npm install       # 当然你可以使用 yarn
 scripts:
-  - npm build:prod         # build
+  - npm run build:prod         # build
