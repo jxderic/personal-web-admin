@@ -24,7 +24,7 @@ export default class extends Vue {
   // https://github.com/nhnent/tui.editor/tree/master/src/js/langs
   @Prop({ default: 'en_US' }) private language!: string
 
-  private markdownEditor?: tuiEditor.Editor
+  private markdownEditor: any
 
   get editorOptions() {
     const options = Object.assign({}, defaultOptions, this.options)
@@ -74,8 +74,8 @@ export default class extends Vue {
   private initEditor() {
     const editorElement = document.getElementById(this.id)
     if (!editorElement) return
+    this.editorOptions.el = editorElement
     this.markdownEditor = new TuiEditor({
-      el: editorElement,
       ...this.editorOptions
     })
     if (this.value) {

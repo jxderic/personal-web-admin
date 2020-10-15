@@ -150,7 +150,7 @@ export default class extends Vue {
     title: [{ validator: this.validateRequire }],
     url: [{ validator: this.validateSourceUrl }]
   }
-  private tempTagView?: ITagView
+  private tempTagView?: any
   // 类别项
   private categoryOptions = []
 

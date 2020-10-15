@@ -47,7 +47,7 @@ export default class extends Vue {
   private show = false
   private options: RouteConfig[] = []
   private searchPool: RouteConfig[] = []
-  private fuse?: Fuse<RouteConfig>
+  private fuse?: any
 
   get routes() {
     return PermissionModule.routes

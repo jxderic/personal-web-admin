@@ -1,30 +1,64 @@
 <template>
   <div class="createPost-container">
-    <el-form ref="postForm" :model="postForm" :rules="rules" class="form-container">
-      <sticky :z-index="10" :class-name="'sub-navbar '+postForm.status">
+    <el-form
+      ref="postForm"
+      :model="postForm"
+      :rules="rules"
+      class="form-container"
+    >
+      <sticky
+        :z-index="10"
+        :class-name="'sub-navbar '+postForm.status"
+      >
         <el-button
           v-loading="loading"
           style="margin-left: 10px;"
           type="success"
           @click="submitForm"
-        >Publish</el-button>
-        <el-button v-loading="loading" type="warning" @click="draftForm">Draft</el-button>
+        >
+          Publish
+        </el-button>
+        <el-button
+          v-loading="loading"
+          type="warning"
+          @click="draftForm"
+        >
+          Draft
+        </el-button>
       </sticky>
 
       <div class="createPost-main-container">
-        <el-form-item style="margin-bottom: 40px;" label="编写方式">
+        <el-form-item
+          style="margin-bottom: 40px;"
+          label="编写方式"
+        >
           <el-radio-group v-model="writeType">
             <el-radio
-              :label="item.value"
               v-for="(item, index) in writeTypes"
               :key="index"
-            >{{item.name}}</el-radio>
+              :label="item.value"
+            >
+              {{ item.name }}
+            </el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item style="margin-bottom: 40px;" prop="title">
-          <material-input v-model="postForm.title" :maxlength="100" name="name" required>标题</material-input>
+        <el-form-item
+          style="margin-bottom: 40px;"
+          prop="title"
+        >
+          <material-input
+            v-model="postForm.title"
+            :maxlength="100"
+            name="name"
+            required
+          >
+            标题
+          </material-input>
         </el-form-item>
-        <el-form-item style="margin-bottom: 40px;" label="简介:">
+        <el-form-item
+          style="margin-bottom: 40px;"
+          label="简介:"
+        >
           <el-input
             v-model="postForm.summary"
             :rows="1"
@@ -34,7 +68,10 @@
           />
         </el-form-item>
 
-        <el-form-item prop="content" style="margin-bottom: 30px;">
+        <el-form-item
+          prop="content"
+          style="margin-bottom: 30px;"
+        >
           <tinymce
             v-if="writeType === 'wangEdit'"
             ref="editor"
@@ -48,7 +85,10 @@
             :options="{hideModeSwitch: true, previewStyle: 'tab'}"
           />
         </el-form-item>
-        <el-form-item label="日期:" class="postInfo-container-item">
+        <el-form-item
+          label="日期:"
+          class="postInfo-container-item"
+        >
           <el-date-picker
             v-model="postForm.date"
             type="datetime"
@@ -56,7 +96,10 @@
             placeholder="选择日期和时间"
           />
         </el-form-item>
-        <el-form-item label="标签:" class="postInfo-container-item">
+        <el-form-item
+          label="标签:"
+          class="postInfo-container-item"
+        >
           <el-select
             v-model="postForm.tags"
             multiple
@@ -73,8 +116,14 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="类别:" class="postInfo-container-item">
-          <el-select v-model="postForm.category" placeholder="请选择文章类别">
+        <el-form-item
+          label="类别:"
+          class="postInfo-container-item"
+        >
+          <el-select
+            v-model="postForm.category"
+            placeholder="请选择文章类别"
+          >
             <el-option
               v-for="item in categoryOptions"
               :key="item.name"
@@ -83,16 +132,24 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item style="margin-bottom: 40px;" label="是否精选">
+        <el-form-item
+          style="margin-bottom: 40px;"
+          label="是否精选"
+        >
           <el-radio-group v-model="postForm.starStatus">
             <el-radio
-              :label="item.value"
               v-for="(item, index) in starArr"
               :key="index"
-            >{{item.name}}</el-radio>
+              :label="item.value"
+            >
+              {{ item.name }}
+            </el-radio>
           </el-radio-group>
         </el-form-item>
-        <el-form-item prop="imageURL" style="margin-bottom: 30px;">
+        <el-form-item
+          prop="imageURL"
+          style="margin-bottom: 30px;"
+        >
           <upload-image v-model="postForm.thumbnail" />
         </el-form-item>
       </div>
@@ -157,7 +214,7 @@ export default class extends Vue {
     title: [{ validator: this.validateRequire }],
     content: [{ validator: this.validateRequire }]
   }
-  private tempTagView?: ITagView
+  private tempTagView?: any
   // 标签备选项
   private tagOptions = []
   // 类别项
@@ -225,7 +282,7 @@ export default class extends Vue {
   }
   // 发布
   private submitForm() {
-    ;(this.$refs.postForm as Form).validate(async valid => {
+    (this.$refs.postForm as Form).validate(async valid => {
       if (valid) {
         this.loading = true
         this.postForm.status = 'published'
@@ -250,7 +307,7 @@ export default class extends Vue {
   }
   // 草稿
   private draftForm() {
-    ;(this.$refs.postForm as Form).validate(async valid => {
+    (this.$refs.postForm as Form).validate(async valid => {
       if (valid) {
         this.loading = true
         this.postForm.status = 'draft'

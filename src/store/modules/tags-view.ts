@@ -4,6 +4,7 @@ import store from '@/store'
 
 export interface ITagView extends Partial<Route> {
   title?: string
+  name?: string
 }
 
 export interface ITagsViewState {
@@ -91,7 +92,7 @@ class TagsView extends VuexModule implements ITagsViewState {
   }
 
   @Action
-  public addView(view: ITagView) {
+  public addView(view: any) {
     this.ADD_VISITED_VIEW(view)
     this.ADD_CACHED_VIEW(view)
   }
@@ -130,7 +131,7 @@ class TagsView extends VuexModule implements ITagsViewState {
   }
 
   @Action
-  public updateVisitedView(view: ITagView) {
+  public updateVisitedView(view: any) {
     this.UPDATE_VISITED_VIEW(view)
   }
 }
