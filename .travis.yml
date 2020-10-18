@@ -1,12 +1,15 @@
 language: node_js
 cache:
   directories:
-  - node_modules      # 缓存 node_modules
-node_js: stable       # 稳定版本
+  - node_modules
+node_js: stable
 branches:
   only:
-  - master            # 每次 push 或者 pull request 时会触发持续集成
+  - master
 install:
-  - npm install       # 当然你可以使用 yarn
+- npm install
 scripts:
-  - npm run build:prod         # build
+- npm run build:prod
+before_install:
+- openssl aes-256-cbc -K $encrypted_9b2d7e19d83c_key -iv $encrypted_9b2d7e19d83c_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
