@@ -13,6 +13,9 @@ scripts:
 - npm run build:prod
 addons:
   ssh_known_hosts: 47.98.183.206
+  apt:
+    packages:
+    - sshpass
 after_success:
 - chmod 600 ~/.ssh/id_rsa
 - sshpass -p $DEPLOY_PASS scp -o stricthostkeychecking=no -r ./dist/* root@47.98.183.206:/usr/share/nginx/html
