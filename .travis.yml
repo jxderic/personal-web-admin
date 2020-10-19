@@ -18,10 +18,9 @@ addons:
       - sshpass
 after_success:
   - chmod 600 ~/.ssh/id_rsa
-  - export SSHPASS=$DEPLOY_PASS
 # 直接将产物scp到服务器太慢了，国外服务器传国内服务器
 # - sshpass -e scp -o stricthostkeychecking=no -r ./dist/* root@47.98.183.206:/usr/share/nginx/html
-  - sshpass -e ssh root@47.98.183.206 -o stricthostkeychecking=no "sh ./deploy.sh"
+  - sshpass -p $DEPLOY_PASS ssh root@47.98.183.206 -o stricthostkeychecking=no "sh ./deploy.sh"
 # before_install:
 #   - openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv
 #   - in id_rsa.enc -out ~/.ssh/id_rsa -d
