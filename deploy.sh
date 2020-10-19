@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "deploying"
-cd /eric/personal-web/personal-web-admin
 git pull origin master
 npm config set registry https://registry.npm.taobao.org
 npm install --no-lockfile
