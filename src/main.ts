@@ -1,9 +1,9 @@
 /*
+ * @Descripttion: 
  * @Author: jinxiaodong
- * @Date: 2019-11-15 16:38:55
+ * @Date: 2020-10-15 14:25:10
  * @LastEditors: jinxiaodong
- * @LastEditTime: 2019-11-20 19:04:14
- * @Description: 入口文件
+ * @LastEditTime: 2020-10-20 18:21:57
  */
 import Vue, { DirectiveOptions } from 'vue'
 
