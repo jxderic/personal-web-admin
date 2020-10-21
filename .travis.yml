@@ -2,7 +2,8 @@ language: node_js
 cache:
   directories:
   - node_modules
-node_js: stable
+node_js: 
+  - '12.19.0'
 branches:
   only:
   - master
