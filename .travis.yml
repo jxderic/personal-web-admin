@@ -1,11 +1,15 @@
 language: node_js
-node_js: stable
+cache:
+  directories:
+  - node_modules
+node_js: 
+  - '12.19.0'
 branches:
   only:
   - master
 install:
 - npm config set registry https://registry.npm.taobao.org
-- npm install --no-lockfile
+- npm install
 scripts:
 - npm run build:prod
 addons:
