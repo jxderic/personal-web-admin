@@ -2,8 +2,8 @@ language: node_js
 cache:
   directories:
   - node_modules
-node_js: 
-  - '12.19.0'
+node_js:
+- 12.19.0
 branches:
   only:
   - master
@@ -16,16 +16,13 @@ addons:
   ssh_known_hosts: 47.98.183.206
   apt:
     packages:
-      - sshpass
+    - sshpass
 after_success:
-  - chmod 600 ~/.ssh/id_rsa
-  - export SSHPASS=$DEPLOY_PASS
-# 直接将产物scp到服务器太慢了，国外服务器传国内服务器
-# - sshpass -e scp -o stricthostkeychecking=no -r ./dist/* root@47.98.183.206:/usr/share/nginx/html
-  - sshpass -e ssh -o stricthostkeychecking=no root@47.98.183.206 "cd /eric/personal-web/personal-web-admin && git pull origin master && export PATH=/usr/local/node/12.19.0/bin:$PATH && sh ./deploy.sh"
-# before_install:
-#   - openssl aes-256-cbc -K $encrypted_04674a2f3de9_key -iv $encrypted_04674a2f3de9_iv
-#   - in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- export SSHPASS=$DEPLOY_PASS
+- sshpass -e ssh -o stricthostkeychecking=no root@47.98.183.206 "cd /eric/personal-web/personal-web-admin
+  && git pull origin master && export PATH=/usr/local/node/12.19.0/bin:$PATH && sh
+  ./deploy.sh"
 env:
   global:
-    secure: sgG/oUjlY/eOSife9dRxBIvphuf4Udpd/LBLE2MA0EgNPkiPJIHkjakIIWaM+fGWk31DfTL6R4mOTfCvSUn3nbDM6X7UZArReny+sFcORGWVlGRuoRjKKR/jXL1bGCgwD9/V1agOdGMeQ/BZB50nmDTvzK/c4jRHBS9RNs4JLR7b37Cl3SeC2ZpiSSDYnYVZIRtIDikQv9oRl7xTUM8h2Ku+CKMvpFX0dOADI/SjS41C3Wp93+14dVdYst8GUP5XfN9g+qyg62rSFDFmA0VWICdFgiHFr9d8pTizdyTuPElYym/M91ry63PbvvLsevf4B4hzI1JVoKBHllVmWKgv+1/U2zptu/Gxqh3hUt8XFLswZwKP4IooOM0NkmMT/fd1KiXQxThQOAcplVGG4D9TBqHEjkOmSoObjnEC1EhBC3Ppuz6GsHh7kVRd3GRDAO5y7GOqmDUH/DNNHVbqKXVeCX2HIQfe2E1SvkwDF1wUCtmb+Qgrp4C360OXME77KIstO+y+cAe0OVMAdDRyvSSrhs/S+Id0bY2qjF8zVX2QuUkVk3po/7x0Fgwj1Vv/ln/9ZECp94eGYHAZpeK0AZf0tujxTj6U0Xrs/UOLJHbraOlOlluUfYepGumH5wC8aExRa1u1WUgEZeIRCFJ4W4JqINiALeW7HVDvpr8Q3EPTfUA=
+  - secure: k/8A7zZrLja/BjfrH/TffXLdhShvVyVeQLO3P5Yk9TIzH6PR8FSAgSKFSNEAP87VxdZLWzMV2Ub3OvkcZeApKVmoNqN+c/QHMs7s5y4U32doNmDXm0lHqEpq7nGDoM1fAsDM/HGDPT4TXUn8lh27Ia3YhBVSJtAx9JiLySAeR+vq42W7phGXXuxIVuXo6QRYxN5PoYSzVfZzYZ7OWJX+UEfaLSUxb5PNpYaXBvHSs/Mtqgmy2xqSii6lLJa+YuFJ2ZXSW36EIkgWVEJ6ZVG8y2haZCdHD5In0S9XdNlhOp/vcxIuNzC/gWEVhqZfO6xZwtTgwKqMRlc3OIj+boYK/pgU/fnaXaawBRpayZYjF5d4YeyXM7WEdJiczKDPbqmpQ+JSAewg92AA3CIj4XSHamc6ifg/XC/hKizQsLq9/z7kwEPzN+1eC7QXWc2blNqVUtLP0l9kj+w8+W0WJ845iszDx8ciWtiUgSxOGmAYqvAmxwh2KiPsEjxzZbsIvw6BiJjY/bjbOk/cUrIYgEpqwXfLthxoln9V8XTYZTCuzDc+pmn2RNCU6360VjBx+KODD/BJck6Fqz3TPIiolaaAiX+njrFEr5ZlSdhUVUrNbkeOMbjl3oZ0T21QCAlECeBKhLRgBfqG2UaPqd2A37ffMKPmlpyYbVr1uhmGYjNc+tc=
