@@ -1,3 +1,10 @@
+<!--
+ * @Descripttion: 
+ * @Author: jinxiaodong
+ * @Date: 2020-10-15 14:25:10
+ * @LastEditors: jinxiaodong
+ * @LastEditTime: 2020-10-23 19:13:13
+-->
 <template>
   <div id="app">
     <router-view />
