@@ -1,10 +1,11 @@
 /*
- * @Descripttion:
+ * @Descripttion: 
  * @Author: jinxiaodong
  * @Date: 2020-10-15 14:25:10
  * @LastEditors: jinxiaodong
- * @LastEditTime: 2020-10-21 09:47:03
+ * @LastEditTime: 2020-10-23 18:42:18
  */
+
 import Vue, { DirectiveOptions } from 'vue'
 
 import 'normalize.css'
