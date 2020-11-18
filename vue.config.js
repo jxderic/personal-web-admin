@@ -2,7 +2,7 @@
  * @Author: jinxiaodong
  * @Date: 2019-11-15 16:38:58
  * @LastEditors: jinxiaodong
- * @LastEditTime: 2020-03-07 20:32:03
+ * @LastEditTime: 2020-10-25 10:33:15
  * @Description: webpack配置
  */
 const path = require('path')
@@ -15,7 +15,7 @@ const mockServerPort = 9528 // TODO: get this variable from setting.ts
 const name = 'Vue Typescript Admin' // TODO: get this variable from setting.ts
 
 module.exports = {
-  publicPath: '/',
+  publicPath: './',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: true,
   devServer: {
